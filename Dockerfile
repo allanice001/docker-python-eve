@@ -1,7 +1,8 @@
-FROM alpine:3.2
+FROM ubuntu:14.04
 
-RUN apk add --update musl python3 py-pip eve wget && \
-    rm /var/cache/apk/*
+RUN apt-get update -y
+RUN apt install python-pip python-dev python-setuptools -y
+RUN pip install eve
 
 EXPOSE 5000 80 81
 COPY ./app /app
